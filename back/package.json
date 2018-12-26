@@ -4,7 +4,7 @@
   "description": "Backend for calories count",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "NODE_ENV=development nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -50,14 +50,20 @@
   },
   "homepage": "https://github.com/IneoO/calories-count#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
     "express": "^4.16.3",
-    "mongoose": "^5.2.12"
+    "express-validator": "^5.3.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.2.12",
+    "puid": "^1.0.7"
   },
   "devDependencies": {
-    "eslint": "^5.5.0",
+    "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "morgan": "^1.9.1",
     "nodemon": "^1.18.4"
   }
 }

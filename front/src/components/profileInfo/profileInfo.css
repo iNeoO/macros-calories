@@ -1,0 +1,13 @@
+.display-inline-block {
+  display: inline-block;
+}
+
+.mx-calendar-content .cell:hover {
+  border-color: #1e87f0;
+}
+
+.objForm {
+  border-radius: 4px;
+  border: 1px solid #ccc!important;
+  padding: 15px;
+}

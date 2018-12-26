@@ -1,0 +1,81 @@
+.display-inline-block {
+  display: inline-block;
+}
+
+.uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+.slide-fade-enter-active {
+  transition: all .4s ease;
+}
+.slide-fade-leave-active {
+  transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+.margin-bottom--0 {
+  margin-bottom: 0;
+}
+.margin-top--0 {
+  margin-top: 0;
+}
+
+.margin-left--0 {
+  margin-left: 0;
+}
+
+.margin-right--0 {
+  margin-right: 0;
+}
+
+.margin-bottom--40px {
+  margin-bottom: 40px;
+}
+
+.margin-left--10px {
+  margin-left: 10px;
+}
+
+.margin-top--20px {
+  margin-top: 20px;
+}
+
+.margin-right--10px {
+  margin-right: 10px;
+}
+
+.padding--20px {
+  padding: 20px;
+}
+
+.float-right {
+  float: right;
+}
+
+.card-border-radius--4px {
+  border-radius: 4px;
+}
+
+.black {
+  color: black;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.display-none {
+  display: none;
+}

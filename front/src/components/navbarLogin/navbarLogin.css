@@ -1,0 +1,8 @@
+.navbar-item a {
+  color: #4B87F0!important;
+  font-weight: bold;
+}
+
+.navbar-item a:hover {
+  color: #5F94F0!important;
+}

@@ -1,0 +1,13 @@
+.uk-container {
+  max-width: none;
+}
+
+.bodyContent {
+  background-color: lightblue;
+  padding: 10px;
+  flex: 5;
+}
+
+.uk-alert {
+  transition: width 2s, height 4s
+}

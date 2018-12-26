@@ -1,0 +1,59 @@
+.macrosTabsWeek .cell-breakfast {
+  border: none;
+  background-color: #FFEC8B;
+}
+
+.macrosTabsWeek .cell-lunch {
+  border: none;
+  background-color: #BEFFFF;
+}
+
+.macrosTabsWeek .cell-diner {
+  border: none;
+  background-color: #C2F2DC;
+}
+
+.macrosTabsWeek .weeksAliments-table tr {
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+}
+
+.macrosTabsWeek .weeksAliments-table tr:first-child {
+  border-top: 1px solid #e5e5e5!important;
+}
+
+.macrosTabsWeek .weeksAliments-table:last-child {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.macrosTabsWeek .cellClassWeeksAliments {
+  vertical-align: middle!important;
+  font-weight: bold;
+}
+
+@media (max-width: 959px){
+  .macrosTabsWeek .cellClassWeeksAliments p, .macrosTabsWeek .cellClassDayTotal p {
+    float: right;
+  }
+
+  .macrosTabsWeek .cellClassWeeksAliments:before, .macrosTabsWeek .cellClassDayTotal:before {
+    display: inline-block;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: normal;
+  }
+  .macrosTabsWeek .cellClassWeeksAliments:nth-of-type(1):before { content: var(--titleMacrosColumn1); }
+  .macrosTabsWeek .cellClassWeeksAliments:nth-of-type(2):before { content: var(--titleMacrosColumn2); }
+  .macrosTabsWeek .cellClassWeeksAliments:nth-of-type(3):before { content: var(--titleMacrosColumn3); }
+  .macrosTabsWeek .cellClassWeeksAliments:nth-of-type(4):before { content: var(--titleMacrosColumn4); }
+  .macrosTabsWeek .cellClassWeeksAliments:nth-of-type(5):before { content: var(--titleMacrosColumn5); }
+  .macrosTabsWeek .cellClassWeeksAliments:nth-of-type(6):before { content: var(--titleMacrosColumn6); }
+  .macrosTabsWeek .cellClassWeeksAliments:nth-of-type(7):before { content: var(--titleMacrosColumn7); }
+  .macrosTabsWeek .cellClassDayTotal:nth-of-type(4):before { content: var(--titleMacrosColumn4); }
+  .macrosTabsWeek .cellClassDayTotal:nth-of-type(5):before { content: var(--titleMacrosColumn4); }
+  .macrosTabsWeek .cellClassDayTotal:nth-of-type(6):before { content: var(--titleMacrosColumn5); }
+  .macrosTabsWeek .cellClassDayTotal:nth-of-type(7):before { content: var(--titleMacrosColumn5); }
+  .macrosTabsWeek .cellClassDayTotal:nth-of-type(8):before { content: var(--titleMacrosColumn6); }
+  .macrosTabsWeek .cellClassDayTotal:nth-of-type(9):before { content: var(--titleMacrosColumn6); }
+  .macrosTabsWeek .cellClassDayTotal:nth-of-type(10):before { content: var(--titleMacrosColumn7); }
+}

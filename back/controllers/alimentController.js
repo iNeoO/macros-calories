@@ -1,96 +1,131 @@
 const mongoose = require('mongoose');
+const { callBackError } = require('../helpers/callBackHelper.js');
 const Aliment = mongoose.model('aliments');
-const Token = mongoose.model('tokens');
 
 exports.get_aliments = (req, res) => {
-  Token.findById(req.query.t, (err, token) => {
-    if (err) {
-      res.send(err);
+  const result = {};
+  const status = 200;
+  if (req.local.userId) {
+    const query = { userId: req.local.userId };
+    if (req.query.search) {
+      query.name = { '$regex': req.query.search };
     }
-    Aliment.find({ userId: token.userId }, (err, aliments) => {
-      if (err) {
-        res.send(err);
+    const pagination = {};
+    if (req.query.limit) {
+      pagination.limit = parseInt(req.query.limit, 10);
+    }
+    if (req.query.skip) {
+      pagination.skip = parseInt(req.query.skip, 10);
+    }
+    if (req.query.sort) {
+      pagination.sort = req.query.sort;
+    }
+    Aliment.find(query, {}, pagination, (errAliment, aliments) => {
+      if (!errAliment) {
+        Aliment.countDocuments(query, (errCount, count) => {
+          if (!errCount) {
+            result.status = status;
+            result.data = aliments;
+            result.count = count;
+          } else {
+            result.status = 500;
+            result.error = errCount;
+          }
+          res.status(status).send(result);
+        });
+      } else {
+        callBackError(res, 500, 'Something went wrong');
       }
-      res.json({ status: 200, data: aliments });
     });
-  });
+  } else {
+    callBackError(res, 500, 'Something went wrong');
+  }
 };
 
 exports.post_aliment = (req, res) => {
-  Token.findById(req.query.t, (err, token) => {
-    if (err) {
-      res.send(err);
-    }
-    const new_aliment = new Aliment(req.body);
-    new_aliment.userId = token.userId;
+  const result = {};
+  const status = 200;
+  if (req.local.userId) {
+    const alimentObject = req.body;
+    alimentObject.userId = req.local.userId;
+    const new_aliment = new Aliment(alimentObject);
     new_aliment.save((err, aliment) => {
-      if (err) {
-        res.send(err);
+      if (!err) {
+        result.status = status;
+        result.data = aliment;
+      } else {
+        result.status = 500;
+        result.error = err;
       }
-      res.json({ status: 200, data: aliment });
+      res.status(status).send(result);
     });
-  });
+  } else {
+    callBackError(res, 500, 'Something went wrong');
+  }
 };
 
 exports.get_aliment = (req, res) => {
-  Token.findById(req.query.t, (err, token) => {
-    if (err) {
-      res.send(err);
-    }
-    Aliment.find({ _id: req.params.alimentId, userId: token.userId },
+  const result = {};
+  const status = 200;
+  if (req.local.userId) {
+    Aliment.findOne({ _id: req.params.alimentId, userId: req.local.userId },
       (err, aliment) => {
-        if (err) {
-          res.send(err);
+        if (!err) {
+          result.status = status;
+          result.data = aliment;
+        } else {
+          result.status = 404;
+          result.error = err;
         }
-        res.json({ status: 200, data: aliment });
+        res.status(status).send(result);
       });
-  });
+  } else {
+    callBackError(res, 500, 'Something went wrong');
+  }
 };
 
+
 exports.patch_aliment = (req, res) => {
-  Token.findById(req.query.t, (err, token) => {
-    if (err) {
-      res.send(err);
-    }
-    const aliment_patched = {
-      name: req.body.name,
-      quantity: req.body.quantity,
-      kcal: req.body.kcal,
-      carbohydrate: req.body.carbohydrate,
-      fat: req.body.fat,
-      protein: req.body.protein,
-      fibre: req.body.fibre,
-    };
-    const date = new Date();
-    aliment_patched.updated_at = date;
+  const result = {};
+  const status = 200;
+  if (req.local.userId) {
+    const aliment_patched = req.body;
+    aliment_patched.userId = req.local.userId;
     Aliment.findOneAndUpdate({
-      _id: req.params.alimentId, userId: token.userId,
+      _id: req.params.alimentId, userId: req.local.userId,
     }, { '$set': aliment_patched }, {
       new: true,
     }, (err, aliment) => {
-      if (err) {
-        res.send(err);
+      if (!err) {
+        result.status = status;
+        result.data = aliment;
+      } else {
+        result.status = 404;
+        result.error = err;
       }
-      res.json({ status: 200, data: aliment });
+      res.status(status).send(result);
     });
-  });
+  } else {
+    callBackError(res, 500, 'Something went wrong');
+  }
 };
 
 exports.delete_aliment = (req, res) => {
-  Token.findById(req.query.t, (err, token) => {
-    if (err) {
-      res.send(err);
-    }
-    Aliment.remove({
-      _id: req.params.alimentId, userId: token.userId,
-    }, (err) => {
-      if (err) {
-        res.send(err);
-      }
-      res.json({
-        status: 200,
-        message: 'User successfully deleted',
+  const result = {};
+  const status = 200;
+  if (req.local.userId) {
+    Aliment.findOneAndRemove({ _id: req.params.alimentId, userId: req.local.userId },
+      (err) => {
+        if (!err) {
+          result.status = status;
+          result.message = 'Aliment successfully deleted';
+        } else {
+          result.status = 404;
+          result.error = err;
+        }
+        res.status(status).send(result);
       });
-    });
-  });
+  } else {
+    callBackError(res, 500, 'Something went wrong');
+  }
 };

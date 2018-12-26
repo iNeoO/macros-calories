@@ -1,0 +1,59 @@
+.margin-left--10px {
+  margin-left: 10px;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.cell-breakfast {
+  border: none;
+  background-color: #FFEC8B;
+}
+
+.cell-lunch {
+  border: none;
+  background-color: #BEFFFF;
+}
+
+.cell-diner {
+  border: none;
+  background-color: #C2F2DC;
+}
+
+.alimentsEated-table tr {
+  border: none;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+}
+
+.alimentsEated-table:first-child {
+  border-top: 1px solid #e5e5e5;
+}
+
+.alimentsEated-table:last-child {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.cellClassAlimentEated {
+  vertical-align: middle!important;
+  font-weight: bold;
+}
+
+@media (max-width: 959px){
+  .cellClassAlimentEated:before {
+    display: inline-block;
+    width: 150px;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: normal;
+  }
+  .cellClassAlimentEated:nth-of-type(1):before { content: var(--titleMeasurementColumn1); }
+  .cellClassAlimentEated:nth-of-type(2):before { content: var(--titleMeasurementColumn2); }
+  .cellClassAlimentEated:nth-of-type(3):before { content: var(--titleMeasurementColumn3); }
+  .cellClassAlimentEated:nth-of-type(4):before { content: var(--titleMeasurementColumn4); }
+  .cellClassAlimentEated:nth-of-type(5):before { content: var(--titleMeasurementColumn5); }
+  .cellClassAlimentEated:nth-of-type(6):before { content: var(--titleMeasurementColumn6); }
+  .cellClassAlimentEated:nth-of-type(7):before { content: var(--titleMeasurementColumn7); }
+  .cellClassAlimentEated:nth-of-type(8):before { content: var(--titleMeasurementColumn8); }
+}

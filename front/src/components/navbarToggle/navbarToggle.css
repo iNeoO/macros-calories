@@ -1,0 +1,30 @@
+.uk-navbar-left {
+  margin-left: 0!important;
+  margin-right: 0!important;
+}
+
+.navbarToggle {
+  display: none;
+}
+
+@media (max-width: 959px){
+  .navbarHome {
+    display: none;
+  }
+  .navbarToggle {
+    display: flex;
+  }
+}
+
+.uk-offcanvas-bar {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.16);
+}
+
+.navbar-item, .navbar-item a {
+  color: #4B87F0!important;
+  font-weight: bold;
+}
+
+.navbar-item:hover, .navbar-item a:hover {
+  color: #5F94F0!important;
+}

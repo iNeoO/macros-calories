@@ -1,0 +1,25 @@
+.menu-item {
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 38px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #999!important;
+  border-radius: 4px;
+}
+
+.menus:hover{
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  color: #5F94F0!important;
+}
+
+.menu-item-active {
+  color: #4B87F0!important;
+}
+
+.margin-bottom--10px {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,126 @@
+.gradient {
+  background: radial-gradient(ellipse farthest-corner at center bottom, #4B87F0, #86ABFF);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.16);
+}
+
+.background {
+  height: 30em;
+}
+
+.title {
+  text-align: center;
+  height: 30em;
+}
+
+.title--text {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper{
+	overflow: hidden;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.bg-bubbles{
+  height: 100%;
+  left: 0;
+	position: absolute;
+	top: 0;
+  width: 100%;
+}
+
+li {
+  -webkit-transition-timing-function: linear;
+  -webkit-animation: square 10s infinite;
+  animation: square 10s infinite;
+  background-color: white;
+  bottom: -150px;
+  display: block;
+  height: 40px;
+  list-style: none;
+  opacity: 0.20;
+  position: absolute;
+  transition-timing-function: linear;
+  width: 40px;
+}
+
+li:nth-child(1){
+	left: 10%;
+}
+
+li:nth-child(2){
+  animation-delay: 2s;
+  animation-duration: 7s;
+  height: 80px;
+  left: 20%;
+  width: 80px;
+}
+
+li:nth-child(3){
+  animation-delay: 4s;
+  left: 25%;
+}
+
+li:nth-child(4){
+  animation-duration: 9s;
+  background-color: white;
+  height: 60px;
+  left: 40%;
+  width: 60px;
+}
+
+li:nth-child(5){
+  left: 70%;
+}
+
+li:nth-child(6){
+  animation-delay: 3s;
+  background-color: white;
+  height: 120px;
+  left: 80%;
+  width: 120px;
+}
+
+li:nth-child(7){
+  animation-delay: 1s;
+  height: 160px;
+  left: 32%;
+  width: 160px;
+}
+
+li:nth-child(8){
+  animation-delay: 2s;
+  animation-duration: 5s;
+  height: 20px;
+  left: 55%;
+  width: 20px;
+}
+
+li:nth-child(9){
+  animation-delay: 2s;
+  animation-duration: 4s;
+  background-color: white;
+  height: 10px;
+  left: 25%;
+  width: 10px;
+}
+
+li:nth-child(10){
+  animation-delay: 4s;
+  height: 160px;
+  left: 90%;
+  width: 160px;
+}
+
+@-webkit-keyframes square {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-650px) rotate(600deg); }
+}
+@keyframes square {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-650px) rotate(600deg); }
+}

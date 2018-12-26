@@ -1,18 +1,19 @@
+const aliment = require('../controllers/alimentController');
+const isAuthenticated = require('../middleware/loginMiddleware');
+
 module.exports = (app) => {
-  const user = require('../controllers/userController');
-  const isAuthenticated = require('../middleware/loginMiddleware');
 
-  app.route('/aliments')
+  app.route('/api/aliments')
     .all(isAuthenticated)
-    .get(user.get_users);
+    .get(aliment.get_aliments);
 
-  app.route('aliment')
+  app.route('/api/aliment')
     .all(isAuthenticated)
-    .post(user.post_user);
+    .post(aliment.post_aliment);
 
-  app.route('/aliment/:alimentId')
+  app.route('/api/aliment/:alimentId')
     .all(isAuthenticated)
-    .get(user.get_user)
-    .patch(user.patch_user)
-    .delete(user.delete_user);
+    .get(aliment.get_aliment)
+    // .delete(aliment.delete_aliment)
+    .patch(aliment.patch_aliment);
 };

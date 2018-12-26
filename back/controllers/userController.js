@@ -1,63 +1,121 @@
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
+const { callBackError } = require('../helpers/callBackHelper.js');
 const User = mongoose.model('users');
 
-exports.get_users = (req, res) => {
-  User.find({}, (err, users) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json({ status: 200, data: users });
-  });
-};
+const environment = process.env.NODE_ENV;
+const stage = require('../config')[environment];
 
 exports.post_user = (req, res) => {
+  const result = {};
+  const status = 200;
   const new_user = new User(req.body);
   new_user.save((err, user) => {
-    if (err) {
-      res.send(err);
+    if (!err) {
+      result.status = status;
+      result.data = user;
+      res.status(status).send(result);
+    } else {
+      callBackError(res, 500, err);
     }
-    res.json({ status: 200, data: user });
   });
 };
 
 exports.get_user = (req, res) => {
-  User.findById(req.params.userId, (err, user) => {
-    if (err) {
-      res.send(err);
+  const result = {};
+  const status = 200;
+  if (req.local.userId) {
+    User.findById(req.local.userId, (err, user) => {
+      if (!err) {
+        result.status = status;
+        result.data = user;
+      } else {
+        result.status = 404;
+        result.error = err;
+      }
+      res.status(status).send(result);
+    });
+  } else {
+    callBackError(res, 500, 'Something went wrong');
+  }
+};
+
+const update_user = (res, user_patch, userId) => {
+  const result = {};
+  const status = 200;
+  delete user_patch.username;
+  User.findOneAndUpdate({
+    _id: userId,
+  }, {
+    '$set': user_patch,
+  }, {
+    new: true,
+  }, (err, user) => {
+    if (!err) {
+      result.status = status;
+      result.data = user;
+      res.status(status).send(result);
+    } else {
+      callBackError(res, 404, err);
     }
-    res.json({ status: 200, data: user });
   });
 };
 
 exports.patch_user = (req, res) => {
-  const user_patched = {
-    name: req.body.name,
-    password: req.body.password,
-  };
-  const date = new Date();
-  user_patched.updated_at = date;
-  User.findOneAndUpdate({
-    _id: req.params.userId,
-  }, { '$set': user_patched }, {
-    new: true,
-  }, (err, user) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json({ status: 200, data: user });
-  });
+  if (req.local.userId) {
+    const userId = req.local.userId;
+    const user = req.body;
+    update_user(res, user, userId);
+  } else {
+    callBackError(res, 500, 'Something went wrong');
+  }
+};
+
+exports.patch_password = (req, res) => {
+  if (req.local.userId) {
+    const userId = req.local.userId;
+    const { password, newPassword } = req.body;
+    User.findById(userId, (err, user) => {
+      bcrypt.compare(password, user.password, (err, response) => {
+        if (!err && response) {
+          bcrypt.hash(newPassword, stage.saltingRounds, (err, hash) => {
+            if (!err) {
+              const user_patch = {
+                password: hash,
+              };
+              update_user(res, user_patch, userId);
+            } else {
+              callBackError(res, 500, 'Error hashing password for user');
+            }
+          });
+        } else {
+          callBackError(res, 401, 'Wrong credential');
+        }
+      });
+    }).select('+password');
+  } else {
+    callBackError(res, 500, 'Error hashing password for user');
+  }
 };
 
 exports.delete_user = (req, res) => {
-  User.remove({
-    _id: req.params.userId,
-  }, (err) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json({
-      status: 200,
-      message: 'User successfully deleted',
+  const result = {};
+  let status = 200;
+  if (req.local.userId) {
+    User.findOneAndRemove({
+      _id: req.local.userId,
+    }, (err) => {
+      if (!err) {
+        result.status = status;
+        result.message = 'User successfully deleted';
+      } else {
+        status = 500;
+        result.status = status;
+        result.error = err;
+      }
+      res.status(status).send(result);
     });
-  });
+  } else {
+    callBackError(res, 500, 'Error hashing password for user');
+  }
 };

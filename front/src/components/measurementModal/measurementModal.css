@@ -1,0 +1,9 @@
+.uk-container {
+  max-width: none;
+}
+
+.bodyContent {
+  background-color: lightblue;
+  padding: 10px;
+  flex: 5;
+}

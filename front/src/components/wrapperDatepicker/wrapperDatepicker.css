@@ -1,0 +1,52 @@
+.v2-date-wrap .v2-picker-trigger {
+  height: 36px;
+  line-height: 40px;
+}
+
+.v2-date-wrap {
+  border-radius: 4px;
+  border-width: 2px;
+  height: 40px;
+  width: 100%;
+}
+
+.v2-date-wrap:hover, .v2-date-wrap:focus {
+  border-color: #5F94F0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.16);
+}
+
+.v2-picker-panel__day.selected span {
+  background: #4B87F0;
+}
+
+.v2-picker-panel__day.normal:hover {
+  color: #4B87F0;
+}
+
+.v2-picker-panel__day.today {
+  color: #4B87F0;
+}
+
+.v2-picker-panel__range-day.selected span {
+  background: #4B87F0;
+}
+
+.v2-picker-panel__range-day.normal:hover {
+  color: #4B87F0;
+}
+
+.v2-picker-panel__range-day.today {
+  color: #4B87F0;
+}
+
+.v2-picker-panel__range-day.start-date span, .v2-picker-panel__range-day.end-date span {
+  background: #4B87F0;
+}
+
+.v2-picker-panel__range-day.in-range:hover {
+  background-color: #5F94F0;
+}
+
+.v2-picker-panel__range-day.in-range {
+  background-color: #c1d4ff;
+}

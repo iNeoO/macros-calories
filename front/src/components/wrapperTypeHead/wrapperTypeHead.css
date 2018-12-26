@@ -1,0 +1,72 @@
+.v-autocomplete .v-autocomplete-input-group .v-autocomplete-input {
+  font-size: 1.5em;
+  padding: 10px 15px;
+  box-shadow: none;
+  border: 2px solid #4B87F0;
+  width: calc(100% - 32px);
+  outline: none;
+  background-color: #fff;
+}
+.v-autocomplete .v-autocomplete-input-group.v-autocomplete-selected .v-autocomplete-input {
+  color: #4B87F0;
+  background-color: #fff;
+}
+.v-autocomplete .v-autocomplete-list {
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 4px;
+  width: 100%;
+  z-index: 200;
+  text-align: left;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+.v-autocomplete .v-autocomplete-list .v-autocomplete-list-item {
+  cursor: pointer;
+  background-color: #fff;
+  padding: 10px;
+}
+.v-autocomplete .v-autocomplete-list .v-autocomplete-list-item:last-child {
+  border-bottom: none;
+}
+.v-autocomplete .v-autocomplete-list .v-autocomplete-list-item:hover {
+  background-color: #cdcdcd;
+}
+.v-autocomplete .v-autocomplete-list .v-autocomplete-list-item abbr {
+  opacity: 0.8;
+  font-size: 0.8em;
+  display: block;
+  font-family: sans-serif;
+}
+pre {
+  text-align: left;
+  white-space: pre-wrap;
+  background-color: #eee;
+  border: 1px solid #c0c0c0;
+  padding: 20px !important;
+  border-radius: 10px;
+  font-family: monospace !important;
+}
+.left {
+  text-align: left;
+}
+.note {
+  border-left: 5px solid #ccc;
+  padding: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #white;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 10px;
+}

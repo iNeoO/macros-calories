@@ -1,11 +1,13 @@
+const token = require('../controllers/tokenController');
+const isAuthenticated = require('../middleware/loginMiddleware');
+
 module.exports = (app) => {
-  const token = require('../controllers/tokenController');
 
-  app.route('/token')
-    .get(token.get_token);
+  app.route('/api/token')
+    .post(token.post_auth);
 
-  app.route('/token/:tokenId')
-    .get(token.get_token_id)
-    .post(token.post_token)
+  app.route('/api/token/:token')
+    .get(token.get_token)
+    .all(isAuthenticated)
     .delete(token.delete_token);
 };
