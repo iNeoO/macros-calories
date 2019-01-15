@@ -232,7 +232,7 @@ const lang = {
       height: 'taille',
       weight: 'poids',
       name: 'nom',
-      quantityEated: 'quantité eated',
+      quantityEated: 'quantité mangée',
       quantity: 'quantité',
       kcal: 'kcal',
       carbohydrate: 'glucides',

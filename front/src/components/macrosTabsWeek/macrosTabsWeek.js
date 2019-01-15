@@ -138,11 +138,6 @@ export default {
         'uk-text-right': this.alimentsDay && !!this.alimentsDay.aliments.length,
       };
     },
-    isDisabledButtonEdit() {
-      const date = new Date(this.date);
-      const today = new Date();
-      return !(date.getTime() < today.getTime() || date.toDateString() === today.toDateString());
-    },
   },
   mounted() {
   },

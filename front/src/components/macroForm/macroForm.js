@@ -98,9 +98,6 @@ export default {
       this.getAliments(query);
     },
     disabledDate(date) {
-      if (date.getTime() > Date.now()) {
-        return true;
-      }
       for (let i = 0; i < this.macrosDates.length; i += 1) {
         const macroDate = new Date(this.macrosDates[i]);
         if (date.toDateString() === macroDate.toDateString()) {
@@ -153,7 +150,19 @@ export default {
     },
     addAlimentEated(aliment) {
       this.isAlimentEatedVisible = false;
-      this.alimentsEated.aliments.push(aliment);
+      const { quantity, quantityEated } = aliment;
+      const newAliment = {
+        name: aliment.name,
+        quantity: quantityEated,
+        kcal: Math.round(aliment.kcal * (quantity / quantityEated)),
+        carbohydrate: Math.round(aliment.carbohydrate * (quantity / quantityEated)),
+        fat: Math.round(aliment.fat * (quantity / quantityEated)),
+        protein: Math.round(aliment.protein * (quantity / quantityEated)),
+        fiber: Math.round(aliment.fiber * (quantity / quantityEated)),
+        description: aliment.description,
+        mealType: aliment.mealType,
+      };
+      this.alimentsEated.aliments.push(newAliment);
     },
     editAlimentEated([aliment, oldAliment]) {
       for (let i = 0; i < this.alimentsEated.aliments.length; i += 1) {
@@ -181,10 +190,8 @@ export default {
       date.setDate(date.getDate() - ((date.getDay() + 6) % 7));
       this.$router.push({ path: '/macros', query: { date: this.formatingDate(date) } });
     },
-    saveMacro() {
-      if (this.alimentsEated.height &&
-        this.alimentsEated.weight &&
-        this.alimentsEated.activityType.type &&
+    preSaveMacro() {
+      if (this.alimentsEated.activityType.type &&
         this.alimentsEated.date &&
         ((this.alimentsEated.activityType.type !== 'custom'
         && this.alimentsEated.activityType.objKcal === 0) ||
@@ -197,15 +204,30 @@ export default {
           ...this.alimentsEated,
           aliments,
         };
-        if (this.alimentsEated._id) {
-          alimentsEated._id = this.alimentsEated._id;
-          this.patchMacro(alimentsEated).then(this.redirectAfterSave);
+        this.getNearestMeasurement(this.alimentsEated.date).then(() => {
+          this.alimentsEated.height = this.nearestMeasurement.height;
+          this.alimentsEated.weight = this.nearestMeasurement.weight;
+        });
+        if (!this.alimentsEated.height || !this.alimentsEated.weight) {
+          this.getNearestMeasurement(this.alimentsEated.date).then(() => {
+            this.alimentsEated.height = this.nearestMeasurement.height;
+            this.alimentsEated.weight = this.nearestMeasurement.weight;
+            this.saveMacro(alimentsEated);
+          });
         } else {
-          this.postMacro(alimentsEated).then(this.redirectAfterSave);
+          this.saveMacro(alimentsEated);
         }
       } else {
         this.alertMacro.text = this.$t('macro.alimentsEated.alertInput');
         this.alertMacro.isVisble = true;
+      }
+    },
+    saveMacro(alimentsEated) {
+      if (this.alimentsEated._id) {
+        alimentsEated._id = this.alimentsEated._id;
+        this.patchMacro(alimentsEated).then(this.redirectAfterSave);
+      } else {
+        this.postMacro(alimentsEated).then(this.redirectAfterSave);
       }
     },
   },
@@ -215,15 +237,20 @@ export default {
       limit: 5,
     };
     const params = this.$route.query;
-    if (params.date) {
-      this.alimentsEated.date = new Date(params.date);
-      if (!params.id) {
+    this.getMacrosDates().then(() => {
+      if (params.date) {
+        for (let i = 0; i < this.macrosDates.length; i += 1) {
+          if (this.params.date === this.formatingDate(this.macrosDates[i])) {
+            return;
+          }
+        }
+        this.alimentsEated.date = new Date(params.date);
         this.getNearestMeasurement(this.alimentsEated.date).then(() => {
           this.alimentsEated.height = this.nearestMeasurement.height;
           this.alimentsEated.weight = this.nearestMeasurement.weight;
         });
       }
-    }
+    });
     if (params.id) {
       this.getMacro(params.id).then(() => {
         this.alimentsEated = cloneDeep(this.macro);
@@ -237,7 +264,6 @@ export default {
         this.alimentsEated.nutriments = this.user.nutriments;
       }
     });
-    this.getMacrosDates();
     this.getAliments(query);
   },
   components: {

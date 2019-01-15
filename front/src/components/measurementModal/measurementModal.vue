@@ -15,7 +15,8 @@
               <input class="uk-input input-blue"
                 v-model.number="measurement.height"
                 id="measurementHeight"
-                type="text"
+                type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.height')} (cm)`|capitalize">
             </div>
           </div>
@@ -27,7 +28,8 @@
               <input class="uk-input input-blue"
                 v-model.number="measurement.weight"
                 id="measurementWeight"
-                type="text"
+                type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.weight')} (kg)`|capitalize">
             </div>
           </div>
@@ -40,6 +42,7 @@
                 v-model.number="measurement.breath"
                 id="measurementBreath"
                 type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.breath')} (cm)`|capitalize">
             </div>
           </div>
@@ -52,6 +55,7 @@
                 v-model.number="measurement.underBreath"
                 id="measurementUnderBreath"
                 type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.underBreath')} (cm)`|capitalize">
             </div>
           </div>
@@ -64,6 +68,7 @@
                 v-model.number="measurement.waist"
                 id="measurementWaist"
                 type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.waist')} (cm)`|capitalize">
             </div>
           </div>
@@ -76,6 +81,7 @@
                 v-model.number="measurement.abdomen"
                 id="measurementAbdomen"
                 type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.abdomen')} (cm)`|capitalize">
             </div>
           </div>
@@ -88,6 +94,7 @@
                 v-model.number="measurement.butt"
                 id="measurementButt"
                 type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.butt')} (cm)`|capitalize">
             </div>
           </div>
@@ -102,6 +109,7 @@
                 v-model.number="measurement.leftLeg"
                 id="measurementLeftLeg"
                 type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.leftLeg')} (cm)`|capitalize">
             </div>
           </div>
@@ -114,6 +122,7 @@
                 v-model.number="measurement.rightLeg"
                 id="measurementRightLeg"
                 type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.rightLeg')} (cm)`|capitalize">
             </div>
           </div>
@@ -126,6 +135,7 @@
                 v-model.number="measurement.leftArm"
                 id="measurementLeftArm"
                 type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.leftArm')} (cm)`|capitalize">
             </div>
           </div>
@@ -138,6 +148,7 @@
                 v-model.number="measurement.rightArm"
                 id="measurementRightArm"
                 type="number"
+                step="0.01"
                 :placeholder="`${$t('measurements.measurement.rightArm')} (cm)`|capitalize">
             </div>
           </div>

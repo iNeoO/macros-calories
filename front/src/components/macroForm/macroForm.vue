@@ -1,5 +1,5 @@
 <template>
-  <form class="uk-form-stacked" @submit.prevent="saveMacro">
+  <form class="uk-form-stacked">
     <div v-if="isValidUser">
       <vk-grid class="uk-child-width-expand@s">
         <div class="uk-margin">
@@ -7,7 +7,7 @@
             clear
             :inlineBlock="'uk-display-inline-block'"
             :options="{ disabledDate }"
-            :disabled="!!alimentsEated.aliments.length"
+            :disabled="!!alimentsEated.aliments.length && !!alimentsEated.date"
             :label="`${$t('macro.alimentsEated.date')}`|capitalize"
             :placeholder="$t('macro.alimentsEated.date')|capitalize"
             v-model="alimentsEated.date" />
@@ -96,7 +96,7 @@
           @click="$router.back()">{{ $t('default.back') }}</vk-button>
         <vk-button type="primary"
           class="button-blue"
-          htmlType="submit"
+          @click="preSaveMacro"
           :disabled="!alimentsEated.aliments.length">{{ $t('default.save') }}</vk-button>
       </div>
     </div>

@@ -18,9 +18,6 @@ export default {
     options() {
       return {
         disabledDate(time) {
-          if (time > new Date()) {
-            return true;
-          }
           return time.getDay() !== 1;
         },
       };

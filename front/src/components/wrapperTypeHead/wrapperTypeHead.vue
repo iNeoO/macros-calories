@@ -6,6 +6,7 @@
       :inputClass="inputClass"
       :disabled="disabled"
       v-model="typeHeadValue"
+      :auto-select-one-item="false"
       :minLen="1"
       :wait="200"
       :get-label="getLabel"

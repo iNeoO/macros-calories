@@ -92,7 +92,6 @@
     </article>
     <div :class="alignButton()">
       <vk-button class="primary button-blue"
-        :disabled="isDisabledButtonEdit()"
         @click="$router.push({ path: 'macros/macro', query: { date, id }})">{{ $t('default.edit') }}
       </vk-button>
     </div>

@@ -25,6 +25,7 @@
             v-model.number.number="aliment.quantity"
             id="alimentQuantity"
             type="number"
+            step="0.01"
             :placeholder="$t('aliments.aliment.quantity')|capitalize">
         </div>
       </div>
@@ -37,6 +38,7 @@
             v-model.number="aliment.kcal"
             id="alimentKcal"
             type="number"
+            step="0.01"
             :placeholder="$t('aliments.aliment.kcal')|capitalize">
         </div>
       </div>
@@ -49,6 +51,7 @@
             v-model.number="aliment.carbohydrate"
             id="alimentCarbohydrate"
             type="number"
+            step="0.01"
             :placeholder="`${$t('aliments.aliment.carbohydrate')} (g)`|capitalize">
         </div>
       </div>
@@ -61,6 +64,7 @@
             v-model.number="aliment.fat"
             id="alimentFat"
             type="number"
+            step="0.01"
             :placeholder="`${$t('aliments.aliment.fat')} (g)`|capitalize">
         </div>
       </div>
@@ -73,6 +77,7 @@
             v-model.number="aliment.protein"
             id="alimentProtein"
             type="number"
+            step="0.01"
             :placeholder="`${$t('aliments.aliment.protein')} (g)`|capitalize">
         </div>
       </div>
@@ -85,6 +90,7 @@
             v-model.number="aliment.fiber"
             id="alimentFibre"
             type="number"
+            step="0.01"
             :placeholder="`${$t('aliments.aliment.fiber')} (g)`|capitalize">
         </div>
       </div>

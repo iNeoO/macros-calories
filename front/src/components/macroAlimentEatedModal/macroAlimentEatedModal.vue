@@ -25,7 +25,21 @@
             v-model.number.number="alimentEated.quantity"
             id="alimentEatedModalQuantity"
             type="number"
+            step="0.01"
             :placeholder="`${$t('macro.alimentsEated.quantity')} (g)`|capitalize">
+        </div>
+      </div>
+      <div class="uk-margin" v-if="alimentEatedEdit">
+        <label class="uk-form-label" for="alimentEatedModalQuantityEated">
+          {{ $t('macro.alimentsEated.quantityEated')|capitalize }} (g) *
+        </label>
+        <div class="uk-form-controls">
+          <input class="uk-input input-blue"
+            v-model.number.number="alimentEated.quantityEated"
+            id="alimentEatedModalQuantityEated"
+            type="number"
+            step="0.01"
+            :placeholder="`${$t('macro.alimentsEated.quantityEated')} (g)`|capitalize">
         </div>
       </div>
       <div class="uk-margin">
@@ -37,6 +51,7 @@
             v-model.number="alimentEated.kcal"
             id="alimentEatedModalKcal"
             type="number"
+            step="0.01"
             :placeholder="$t('macro.alimentsEated.kcal')|capitalize">
         </div>
       </div>
@@ -49,6 +64,7 @@
             v-model.number="alimentEated.carbohydrate"
             id="alimentEatedModalCarbohydrate"
             type="number"
+            step="0.01"
             :placeholder="`${$t('macro.alimentsEated.carbohydrate')} (g)`|capitalize">
         </div>
       </div>
@@ -61,6 +77,7 @@
             v-model.number="alimentEated.fat"
             id="alimentEatedModalFat"
             type="number"
+            step="0.01"
             :placeholder="`${$t('macro.alimentsEated.fat')} (g)`|capitalize">
         </div>
       </div>
@@ -73,6 +90,7 @@
             v-model.number="alimentEated.protein"
             id="alimentEatedModalProtein"
             type="number"
+            step="0.01"
             :placeholder="`${$t('macro.alimentsEated.protein')} (g)`|capitalize">
         </div>
       </div>
@@ -85,6 +103,7 @@
             v-model.number="alimentEated.fiber"
             id="alimentEatedModalFibre"
             type="number"
+            step="0.01"
             :placeholder="`${$t('macro.alimentsEated.fiber')} (g)`|capitalize">
         </div>
       </div>
