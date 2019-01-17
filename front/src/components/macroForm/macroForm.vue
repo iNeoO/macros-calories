@@ -77,6 +77,8 @@
           class="button-blue uk-margin-small-left uk-margin-small-bottom"
           @click="addAliment">{{ $t('macro.alimentsEated.add') }}
         </vk-button>
+      </div>
+      <div class="uk-margin uk-text-right">
         <vk-button class="button-white uk-margin-small-left uk-margin-small-bottom"
           @click="openModal()">{{ $t('macro.alimentsEated.manualAdd') }}
         </vk-button>

@@ -205,18 +205,10 @@ export default {
           aliments,
         };
         this.getNearestMeasurement(this.alimentsEated.date).then(() => {
-          this.alimentsEated.height = this.nearestMeasurement.height;
-          this.alimentsEated.weight = this.nearestMeasurement.weight;
-        });
-        if (!this.alimentsEated.height || !this.alimentsEated.weight) {
-          this.getNearestMeasurement(this.alimentsEated.date).then(() => {
-            this.alimentsEated.height = this.nearestMeasurement.height;
-            this.alimentsEated.weight = this.nearestMeasurement.weight;
-            this.saveMacro(alimentsEated);
-          });
-        } else {
+          alimentsEated.height = this.nearestMeasurement.height;
+          alimentsEated.weight = this.nearestMeasurement.weight;
           this.saveMacro(alimentsEated);
-        }
+        });
       } else {
         this.alertMacro.text = this.$t('macro.alimentsEated.alertInput');
         this.alertMacro.isVisble = true;
@@ -238,17 +230,13 @@ export default {
     };
     const params = this.$route.query;
     this.getMacrosDates().then(() => {
-      if (params.date) {
+      if (params.date && !params.id) {
         for (let i = 0; i < this.macrosDates.length; i += 1) {
-          if (this.params.date === this.formatingDate(this.macrosDates[i])) {
+          if (params.date === this.formatingDate(this.macrosDates[i])) {
             return;
           }
         }
         this.alimentsEated.date = new Date(params.date);
-        this.getNearestMeasurement(this.alimentsEated.date).then(() => {
-          this.alimentsEated.height = this.nearestMeasurement.height;
-          this.alimentsEated.weight = this.nearestMeasurement.weight;
-        });
       }
     });
     if (params.id) {

@@ -8,7 +8,7 @@ exports.get_aliments = (req, res) => {
   if (req.local.userId) {
     const query = { userId: req.local.userId };
     if (req.query.search) {
-      query.name = { '$regex': req.query.search };
+      query.name = { '$regex': req.query.search, $options: 'i' };
     }
     const pagination = {};
     if (req.query.limit) {
