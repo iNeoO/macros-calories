@@ -260,6 +260,7 @@ const lang = {
       manualAdd: 'Ajouter aliment manuellement',
       add: 'Ajouter aliment',
       invalidUser: 'il faut complèter son profile avant de pouvoir ajouter des macros',
+      alertDisabled: 'La quantité a été changé les champs sont désactivé, les valeurs nutritionnelles seront proportionnellement changées',
       alertInput: 's\'il vous plait remplissez tous les champs !',
     },
     modal: {

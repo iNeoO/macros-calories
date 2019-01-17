@@ -29,7 +29,7 @@
             :placeholder="`${$t('macro.alimentsEated.quantity')} (g)`|capitalize">
         </div>
       </div>
-      <div class="uk-margin" v-if="alimentEatedEdit">
+      <div class="uk-margin" v-if="!alimentEatedEdit">
         <label class="uk-form-label" for="alimentEatedModalQuantityEated">
           {{ $t('macro.alimentsEated.quantityEated')|capitalize }} (g) *
         </label>
@@ -49,6 +49,7 @@
         <div class="uk-form-controls">
           <input class="uk-input input-blue"
             v-model.number="alimentEated.kcal"
+            :disabled="isInputDisabled"
             id="alimentEatedModalKcal"
             type="number"
             step="0.01"
@@ -62,6 +63,7 @@
         <div class="uk-form-controls">
           <input class="uk-input input-blue"
             v-model.number="alimentEated.carbohydrate"
+            :disabled="isInputDisabled"
             id="alimentEatedModalCarbohydrate"
             type="number"
             step="0.01"
@@ -75,6 +77,7 @@
         <div class="uk-form-controls">
           <input class="uk-input input-blue"
             v-model.number="alimentEated.fat"
+            :disabled="isInputDisabled"
             id="alimentEatedModalFat"
             type="number"
             step="0.01"
@@ -88,6 +91,7 @@
         <div class="uk-form-controls">
           <input class="uk-input input-blue"
             v-model.number="alimentEated.protein"
+            :disabled="isInputDisabled"
             id="alimentEatedModalProtein"
             type="number"
             step="0.01"
@@ -101,6 +105,7 @@
         <div class="uk-form-controls">
           <input class="uk-input input-blue"
             v-model.number="alimentEated.fiber"
+            :disabled="isInputDisabled"
             id="alimentEatedModalFibre"
             type="number"
             step="0.01"
@@ -139,6 +144,12 @@
         <div class="uk-alert-danger uk-alert" v-if="alimentEatedAlert.isVisble">
             <a class="uk-alert-close uk-close"></a>
             <p>{{ alimentEatedAlert.text }}</p>
+        </div>
+      </transition>
+      <transition name="slide-fade">
+        <div class="uk-alert-primary uk-alert" v-if="isInputDisabled">
+            <a class="uk-alert-close uk-close"></a>
+            <p>{{ $t('macro.alimentsEated.alertDisabled') }}</p>
         </div>
       </transition>
       <div slot="footer" class="uk-text-right">
