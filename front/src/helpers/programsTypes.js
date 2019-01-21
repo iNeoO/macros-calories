@@ -124,13 +124,13 @@ module.exports = {
     return (((13.707 * weight) + (492.3 * (height / 100))) - (6.673 * old)) + 77.607;
   },
   proteinGtoKcal(protein) {
-    return protein * 4;
+    return Math.round(protein * 4);
   },
   carbohydrateGtoKcal(carbohydrate) {
-    return carbohydrate * 4;
+    return Math.round(carbohydrate * 4);
   },
   fatGtoKcal(fat) {
-    return fat * 9;
+    return Math.round(fat * 9);
   },
   proteinKcaltoG(protein) {
     return Math.round(protein / 4);

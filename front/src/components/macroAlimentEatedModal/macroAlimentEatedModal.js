@@ -74,16 +74,16 @@ export default {
         typeof this.alimentEated.protein === 'number') {
         if (this.alimentEatedEdit) {
           if (this.alimentEated.quantity !== this.alimentEatedEdit.quantity) {
-            this.alimentEated.kcal = this.alimentEatedEdit.kcal *
-              (this.alimentEated.quantity / this.alimentEatedEdit.quantity);
-            this.alimentEated.carbohydrate = this.alimentEatedEdit.carbohydrate *
-              (this.alimentEated.quantity / this.alimentEatedEdit.quantity);
-            this.alimentEated.fat = this.alimentEatedEdit.fat *
-              (this.alimentEated.quantity / this.alimentEatedEdit.quantity);
-            this.alimentEated.protein = this.alimentEatedEdit.protein *
-              (this.alimentEated.quantity / this.alimentEatedEdit.quantity);
-            this.alimentEated.fiber = this.alimentEatedEdit.fiber *
-              (this.alimentEated.quantity / this.alimentEatedEdit.quantity) || 0;
+            this.alimentEated.kcal = Math.round(this.alimentEatedEdit.kcal *
+              (this.alimentEated.quantity / this.alimentEatedEdit.quantity));
+            this.alimentEated.carbohydrate = Math.round(this.alimentEatedEdit.carbohydrate *
+              (this.alimentEated.quantity / this.alimentEatedEdit.quantity));
+            this.alimentEated.fat = Math.round(this.alimentEatedEdit.fat *
+              (this.alimentEated.quantity / this.alimentEatedEdit.quantity));
+            this.alimentEated.protein = Math.round(this.alimentEatedEdit.protein *
+              (this.alimentEated.quantity / this.alimentEatedEdit.quantity));
+            this.alimentEated.fiber = Math.round(this.alimentEatedEdit.fiber *
+              (this.alimentEated.quantity / this.alimentEatedEdit.quantity) || 0);
           }
           this.$emit('editAlimentEated', [this.alimentEated, this.alimentEatedEdit]);
         } else {
