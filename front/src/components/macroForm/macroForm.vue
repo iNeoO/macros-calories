@@ -43,6 +43,7 @@
                 v-model.number="quantity"
                 id="quantity"
                 type="number"
+                step="0.01"
                 :placeholder="$t('macro.alimentsEated.quantity')|capitalize">
             </div>
           </div>
