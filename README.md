@@ -8,5 +8,5 @@ Nodejs
 ## Install
 
 Give a look to :
-- fron/README.md
-- back.README.md
+- front/README.md
+- back/README.md
