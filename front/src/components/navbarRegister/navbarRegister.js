@@ -70,7 +70,7 @@ export default {
           ...this.registerForm,
         };
         registerForm.username = registerForm.username.toLowerCase();
-        this.postUser(this.registerForm).then(() => {
+        this.postUser(registerForm).then(() => {
           const form = {
             username: registerForm.username,
             password: registerForm.password,
