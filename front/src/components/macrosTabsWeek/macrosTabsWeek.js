@@ -103,7 +103,7 @@ export default {
         fatKcal: this.objInKcal.fat,
         proteinG: this.objInG.protein,
         proteinKcal: this.objInKcal.protein,
-        fiber: this.user.nutriments.fiber,
+        fiber: this.alimentsDay.nutriments.fiber,
       };
     },
     diffForTheDay() {
@@ -143,25 +143,28 @@ export default {
   },
   created() {
     const old = (new Date().getFullYear()) - new Date(this.user.birthdate).getFullYear();
-    if (this.user.activityType.type === 'custom') {
-      this.dailyObj = this.user.activityType.objKcal + this.user.activityType.variation;
-    } else {
-      let objKcal = 0;
-      if (this.user.sexe === 'female') {
-        objKcal = Math.floor(getFemaleKcal(
-          this.alimentsDay.weight,
-          this.alimentsDay.height,
-          old,
-        ));
+    if (this.alimentsDay.activityType) {
+      if (this.alimentsDay.activityType.type === 'custom') {
+        this.dailyObj = this.alimentsDay.activityType.objKcal +
+        this.alimentsDay.activityType.variation;
       } else {
-        objKcal = Math.floor(getMaleKcal(
-          this.alimentsDay.weight,
-          this.alimentsDay.height,
-          old,
-        ));
+        let objKcal = 0;
+        if (this.user.sexe === 'female') {
+          objKcal = Math.floor(getFemaleKcal(
+            this.alimentsDay.weight,
+            this.alimentsDay.height,
+            old,
+          ));
+        } else {
+          objKcal = Math.floor(getMaleKcal(
+            this.alimentsDay.weight,
+            this.alimentsDay.height,
+            old,
+          ));
+        }
+        this.dailyObj = objForm[this.alimentsDay.activityType.type].func(objKcal) +
+        this.alimentsDay.activityType.variation;
       }
-      this.dailyObj = objForm[this.user.activityType.type].func(objKcal) +
-        this.user.activityType.variation;
     }
   },
 };

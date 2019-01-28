@@ -57,7 +57,7 @@ export default {
         carbohydrate: Math.floor((this.dailyObj * this.alimentsDay.nutriments.carbohydrate) / 100),
         protein: Math.floor((this.dailyObj * this.alimentsDay.nutriments.protein) / 100),
         fat: Math.floor((this.dailyObj * this.alimentsDay.nutriments.fat) / 100),
-        fiber: this.user.nutriments.fiber,
+        fiber: this.alimentsDay.nutriments.fiber,
       };
       return nutriment;
     },
@@ -75,19 +75,20 @@ export default {
   methods: {
   },
   created() {
-    const old = (new Date().getFullYear()) - new Date(this.user.birthdate).getFullYear();
+    const old = (new Date(this.alimentsDay.date).getFullYear()) -
+      new Date(this.user.birthdate).getFullYear();
     if (this.user.sexe === 'female') {
       this.dailyObj = Math.floor(getFemaleKcal(
-        this.nearestMeasurement.weight,
-        this.nearestMeasurement.height,
+        this.alimentsDay.weight,
+        this.alimentsDay.height,
         old,
-      )) + this.user.activityType.variation;
+      )) + this.alimentsDay.activityType.variation;
     }
     this.dailyObj = Math.floor(getMaleKcal(
-      this.nearestMeasurement.weight,
-      this.nearestMeasurement.height,
+      this.alimentsDay.weight,
+      this.alimentsDay.height,
       old,
-    )) + this.user.activityType.variation;
+    )) + this.alimentsDay.activityType.variation;
   },
   watch: {
   },
