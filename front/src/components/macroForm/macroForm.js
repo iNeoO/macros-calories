@@ -111,13 +111,26 @@ export default {
       let month = d.getMonth() + 1;
       let day = d.getDate();
       const year = d.getFullYear();
-      if (month < 2) {
+      if (month < 10) {
         month = `0${month}`;
       }
-      if (day < 2) {
+      if (day < 10) {
         day = `0${day}`;
       }
       return [year, month, day].join('-');
+    },
+    isoFormatingDate(date) {
+      const d = new Date(date);
+      let month = d.getMonth() + 1;
+      let day = d.getDate();
+      const year = d.getFullYear();
+      if (month < 10) {
+        month = `0${month}`;
+      }
+      if (day < 10) {
+        day = `0${day}`;
+      }
+      return `${[year, month, day].join('-')}T00:00:00.000Z`;
     },
     addAliment() {
       if (this.mealType &&
@@ -204,7 +217,8 @@ export default {
           ...this.alimentsEated,
           aliments,
         };
-        this.getNearestMeasurement(this.alimentsEated.date).then(() => {
+        alimentsEated.date = this.isoFormatingDate(alimentsEated.date);
+        this.getNearestMeasurement(alimentsEated.date).then(() => {
           alimentsEated.height = this.nearestMeasurement.height;
           alimentsEated.weight = this.nearestMeasurement.weight;
           this.saveMacro(alimentsEated);

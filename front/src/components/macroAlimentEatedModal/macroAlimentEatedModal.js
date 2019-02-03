@@ -53,8 +53,11 @@ export default {
       },
     },
     isInputDisabled() {
+      if (!this.alimentEatedEdit) {
+        return false;
+      }
       return (this.alimentEatedEdit &&
-        this.alimentEated.quantity !== this.alimentEatedEdit.quantity) || !this.alimentEatedEdit;
+        this.alimentEated.quantity !== this.alimentEatedEdit.quantity);
     },
   },
   methods: {
