@@ -109,21 +109,21 @@ export default {
     diffForTheDay() {
       return {
         name: this.$t('macros.tabs.diff'),
-        kcal: this.objForTheDay.kcal - this.totalAlimentsForTheDay.kcal,
-        carbohydrateG: this.objForTheDay.carbohydrateG -
-          this.totalAlimentsForTheDay.carbohydrateG,
-        carbohydrateKcal: this.objForTheDay.carbohydrateKcal -
-          this.totalAlimentsForTheDay.carbohydrateKcal,
-        fatG: this.objForTheDay.fatG -
-          this.totalAlimentsForTheDay.fatG,
-        fatKcal: this.objForTheDay.fatKcal -
-          this.totalAlimentsForTheDay.fatKcal,
-        proteinG: this.objForTheDay.proteinG -
-          this.totalAlimentsForTheDay.proteinG,
-        proteinKcal: this.objForTheDay.proteinKcal -
-          this.totalAlimentsForTheDay.proteinKcal,
-        fiber: this.objForTheDay.fiber -
-          this.totalAlimentsForTheDay.fiber,
+        kcal: this.totalAlimentsForTheDay.kcal - this.objForTheDay.kcal,
+        carbohydrateG: this.totalAlimentsForTheDay.carbohydrateG -
+          this.objForTheDay.carbohydrateG,
+        carbohydrateKcal: this.totalAlimentsForTheDay.carbohydrateKcal -
+          this.objForTheDay.carbohydrateKcal,
+        fatG: this.totalAlimentsForTheDay.fatG -
+          this.objForTheDay.fatG,
+        fatKcal: this.totalAlimentsForTheDay.fatKcal -
+          this.objForTheDay.fatKcal,
+        proteinG: this.totalAlimentsForTheDay.proteinG -
+          this.objForTheDay.proteinG,
+        proteinKcal: this.totalAlimentsForTheDay.proteinKcal -
+          this.objForTheDay.proteinKcal,
+        fiber: this.totalAlimentsForTheDay.fiber -
+          this.objForTheDay.fiber,
       };
     },
   },

@@ -40,18 +40,20 @@ export default {
         '--titleMeasurementColumn6': `"${this.$options.filters
           .capitalize(this.$t('measurements.measurement.waist'))}"`,
         '--titleMeasurementColumn7': `"${this.$options.filters
-          .capitalize(this.$t('measurements.measurement.butt'))}"`,
+          .capitalize(this.$t('measurements.measurement.waistTurn'))}"`,
         '--titleMeasurementColumn8': `"${this.$options.filters
-          .capitalize(this.$t('measurements.measurement.leftLeg'))}"`,
+          .capitalize(this.$t('measurements.measurement.butt'))}"`,
         '--titleMeasurementColumn9': `"${this.$options.filters
-          .capitalize(this.$t('measurements.measurement.rightLeg'))}"`,
+          .capitalize(this.$t('measurements.measurement.leftLeg'))}"`,
         '--titleMeasurementColumn10': `"${this.$options.filters
-          .capitalize(this.$t('measurements.measurement.leftArm'))}"`,
+          .capitalize(this.$t('measurements.measurement.rightLeg'))}"`,
         '--titleMeasurementColumn11': `"${this.$options.filters
-          .capitalize(this.$t('measurements.measurement.rightArm'))}"`,
+          .capitalize(this.$t('measurements.measurement.leftArm'))}"`,
         '--titleMeasurementColumn12': `"${this.$options.filters
-          .capitalize(this.$t('measurements.measurement.height'))}"`,
+          .capitalize(this.$t('measurements.measurement.rightArm'))}"`,
         '--titleMeasurementColumn13': `"${this.$options.filters
+          .capitalize(this.$t('measurements.measurement.height'))}"`,
+        '--titleMeasurementColumn14': `"${this.$options.filters
           .capitalize(this.$t('default.description'))}"`,
       };
     },

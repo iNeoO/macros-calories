@@ -41,8 +41,25 @@ export default {
       handler(newValue) {
         if (newValue) {
           const groups = groupBy(this.aliments, 'mealType');
-          this.alimentsSorted = [].concat(groups.breakfast ||
+          const alimentsSorted = [].concat(groups.breakfast ||
             [], groups.lunch || [], groups.diner || []);
+          const some = alimentsSorted.reduce((acc, aliment) => {
+            acc.kcal += aliment.kcal;
+            acc.carbohydrate += aliment.carbohydrate;
+            acc.fat += aliment.fat;
+            acc.protein += aliment.protein;
+            acc.fiber += aliment.fiber;
+            return acc;
+          }, {
+            name: 'total',
+            quantity: '-',
+            kcal: 0,
+            carbohydrate: 0,
+            fat: 0,
+            protein: 0,
+            fiber: 0,
+          });
+          this.alimentsSorted = [...alimentsSorted, some];
         }
       },
       deep: true,

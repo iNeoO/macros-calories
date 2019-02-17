@@ -30,11 +30,13 @@
       <vk-table-column :title="$t('default.edit')">
         <p v-vk-margin slot-scope="{ row }">
           <vk-icon-button
+            v-if="row.name === '-'"
             class="button-blue red-gradiant button-icon uk-margin-small-right"
             icon="trash"
             @click="$emit('removeAlimentEated', row)">
           </vk-icon-button>
           <vk-icon-button
+            v-if="row.name === '-'"
             class="button-blue button-icon"
             icon="pencil"
             @click="$emit('editAlimentEated', row)">

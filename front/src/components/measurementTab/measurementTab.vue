@@ -39,6 +39,9 @@
         <vk-table-column-sort :title="$t('measurements.measurement.waist')"
           cell="waist"
           cellClass="cellClassMeasurement"></vk-table-column-sort>
+        <vk-table-column-sort :title="$t('measurements.measurement.waistTurn')"
+          cell="waistTurn"
+          cellClass="cellClassMeasurement"></vk-table-column-sort>
         <vk-table-column-sort :title="$t('measurements.measurement.butt')"
           cell="butt"
           cellClass="cellClassMeasurement"></vk-table-column-sort>

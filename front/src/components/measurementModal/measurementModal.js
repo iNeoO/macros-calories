@@ -75,6 +75,7 @@ export default {
         this.measurement.underBreath &&
         this.measurement.abdomen &&
         this.measurement.waist &&
+        this.measurement.waistTurn &&
         this.measurement.butt &&
         this.measurement.leftLeg &&
         this.measurement.rightLeg &&

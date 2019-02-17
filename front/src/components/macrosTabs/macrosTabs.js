@@ -54,6 +54,7 @@ export default {
     },
   },
   mounted() {
+    window.scrollTo(0, 0);
     if (this.$route.query.date) {
       this.date = new Date(this.$route.query.date);
     } else {

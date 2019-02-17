@@ -183,7 +183,8 @@ const lang = {
       leftArm: 'cuisse gauche',
       rightArm: 'cuisse droite',
       height: 'taille  (hauteur)',
-      waist: 'tour de taille',
+      waist: 'hanche',
+      waistTurn: 'tour de taille',
     },
     tab: {
       dateRange: 'période',

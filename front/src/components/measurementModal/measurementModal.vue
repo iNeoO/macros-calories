@@ -73,6 +73,19 @@
             </div>
           </div>
           <div class="uk-margin">
+            <label class="uk-form-label" for="measurementWaistTurn">
+              {{ $t('measurements.measurement.waistTurn')|capitalize }} (cm) *
+            </label>
+            <div class="uk-form-controls">
+              <input class="uk-input input-blue"
+                v-model.number="measurement.waistTurn"
+                id="measurementWaistTurn"
+                type="number"
+                step="0.01"
+                :placeholder="`${$t('measurements.measurement.waistTurn')} (cm)`|capitalize">
+            </div>
+          </div>
+          <div class="uk-margin">
             <label class="uk-form-label" for="measurementAbdomen">
               {{ $t('measurements.measurement.abdomen')|capitalize }} (cm) *
             </label>
