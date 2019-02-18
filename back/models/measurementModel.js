@@ -9,6 +9,7 @@ const MeasurementSchema = new Schema({
   underBreath: { type: Number, required: true },
   abdomen: { type: Number, required: true },
   waist: { type: Number, required: true },
+  waistTurn: { type: Number, required: true },
   butt: { type: Number, required: true },
   leftLeg: { type: Number, required: true },
   rightLeg: { type: Number, required: true },
