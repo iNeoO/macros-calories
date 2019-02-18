@@ -1,4 +1,5 @@
 import { mapGetters, mapActions } from 'vuex';
+import isEmpty from 'lodash/isEmpty';
 import groupBy from 'lodash/groupBy';
 import cloneDeep from 'lodash/cloneDeep';
 
@@ -75,8 +76,12 @@ export default {
         typeof this.user.nutriments.protein === 'number' &&
         typeof this.user.nutriments.fiber === 'number';
     },
+    date() {
+      return this.alimentsEated.date;
+    },
   },
   methods: {
+    isEmpty,
     ...mapActions({
       getUser: 'userStore/getUser',
       getNearestMeasurement: 'measurementStore/getNearestMeasurement',
@@ -218,11 +223,7 @@ export default {
           aliments,
         };
         alimentsEated.date = this.isoFormatingDate(alimentsEated.date);
-        this.getNearestMeasurement(alimentsEated.date).then(() => {
-          alimentsEated.height = this.nearestMeasurement.height;
-          alimentsEated.weight = this.nearestMeasurement.weight;
-          this.saveMacro(alimentsEated);
-        });
+        this.saveMacro(alimentsEated);
       } else {
         this.alertMacro.text = this.$t('macro.alimentsEated.alertInput');
         this.alertMacro.isVisble = true;
@@ -267,6 +268,14 @@ export default {
       }
     });
     this.getAliments(query);
+  },
+  watch: {
+    date() {
+      this.getNearestMeasurement(this.alimentsEated.date).then(() => {
+        this.alimentsEated.height = this.nearestMeasurement.height;
+        this.alimentsEated.weight = this.nearestMeasurement.weight;
+      });
+    },
   },
   components: {
     wrapperTypeHead, wrapperDatepicker, macroAlimentsEated, macroAlimentEatedModal,

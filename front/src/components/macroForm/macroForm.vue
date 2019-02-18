@@ -90,7 +90,13 @@
           :isAlimentEatedVisible="isAlimentEatedVisible"/>
       </div>
       <div class="uk-margin">
-        <macroAlimentsEated :aliments="alimentsEated.aliments"
+        <macroAlimentsEated
+          v-if="alimentsEated.activityType.type"
+          :aliments="alimentsEated.aliments"
+          :weight="alimentsEated.weight"
+          :height="alimentsEated.height"
+          :activityType="alimentsEated.activityType"
+          :nutriments="alimentsEated.nutriments"
           @removeAlimentEated="removeAlimentEated"
           @editAlimentEated="openModal"/>
       </div>
