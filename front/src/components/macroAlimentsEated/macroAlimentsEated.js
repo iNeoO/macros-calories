@@ -158,8 +158,8 @@ export default {
         }
         this.dailyObj = objForm[this.activityType.type].func(objKcal) +
         this.activityType.variation;
-        this.displayData();
       }
+      this.displayData();
     }
   },
 };
