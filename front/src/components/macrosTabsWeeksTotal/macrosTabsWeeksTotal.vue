@@ -3,7 +3,7 @@
     <table class="uk-table uk-table-divider uk-table-small uk-table-responsive macroTabsWeekTotal">
       <tr>
         <th> {{ $t('macros.tabs.weekNumber')|capitalize }}</th>
-        <td v-for="(weekNumber, index) in weeksNumbers.reverse()" :key="index">
+        <td v-for="(weekNumber, index) in weeksNumbers" :key="index">
           <span v-vk-tooltip="$d(new Date(macrosStats[weekNumber]['firstDate']), 'short')">
             {{ weekNumber}}
           </span>
@@ -18,13 +18,13 @@
       </tr>
       <tr>
         <th>{{ $t('macros.tabs.isFull')|capitalize }} </th>
-        <td v-for="(weekNumber, index) in weeksNumbers.reverse()" :key="index">
+        <td v-for="(weekNumber, index) in weeksNumbers" :key="index">
           <vk-icon :icon="macrosStats[weekNumber]['full'] ? 'check' : 'close'" ratio="1"></vk-icon>
         </td>
       </tr>
       <tr>
         <th>{{ $t('default.edit')|capitalize }} </th>
-        <td v-for="(weekNumber, index) in weeksNumbers.reverse()" :key="index">
+        <td v-for="(weekNumber, index) in weeksNumbers" :key="index">
           <vk-icon-button
             class="button-blue button-icon"
             icon="pencil"

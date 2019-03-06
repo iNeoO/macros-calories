@@ -20,7 +20,9 @@ export default {
       isMacrosStatsLoading: 'macroStore/isMacrosStatsLoading',
     }),
     weeksNumbers() {
-      return Object.keys(this.macrosStats);
+      const weeks = Object.keys(this.macrosStats);
+      return Object.keys(this.macrosStats)
+        .map((item, id) => weeks[weeks.length - 1 - id]);
     },
   },
   methods: {
