@@ -172,11 +172,11 @@ export default {
       const newAliment = {
         name: aliment.name,
         quantity: quantityEated,
-        kcal: Math.round(aliment.kcal * (quantity / quantityEated)),
-        carbohydrate: Math.round(aliment.carbohydrate * (quantity / quantityEated)),
-        fat: Math.round(aliment.fat * (quantity / quantityEated)),
-        protein: Math.round(aliment.protein * (quantity / quantityEated)),
-        fiber: Math.round(aliment.fiber * (quantity / quantityEated)),
+        kcal: Math.round(aliment.kcal * (quantityEated / quantity)),
+        carbohydrate: Math.round(aliment.carbohydrate * (quantityEated / quantity)),
+        fat: Math.round(aliment.fat * (quantityEated / quantity)),
+        protein: Math.round(aliment.protein * (quantityEated / quantity)),
+        fiber: Math.round(aliment.fiber * (quantityEated / quantity)),
         description: aliment.description,
         mealType: aliment.mealType,
       };
