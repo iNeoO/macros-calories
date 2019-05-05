@@ -52,7 +52,7 @@ export default {
   computed: {
     typeHeadValue: {
       get() {
-        return this.value;
+        return undefined;
       },
       set(value) {
         this.$emit('input', value);
